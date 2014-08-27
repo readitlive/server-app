@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Live Blog for Rojere</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      
+    </style>
+  </head>
+  <body>
+    <h1> This is a live blog for Rojere </h1>
+  <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+      socket.on('info',function(data){
+      console.log(data);
+      });
+    </script>
+  </body>
+</html>
