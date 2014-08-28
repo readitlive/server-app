@@ -5,6 +5,7 @@
   "dependencies": {
     "express": "^4.8.5",
     "mongoose": "^3.8.15",
-    "socket.io": "^1.0.6"
+    "socket.io": "^1.0.6",
+    "socket.io-redis": "^0.1.3"
   }
 }
