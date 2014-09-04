@@ -27,11 +27,43 @@ router.get('/',function(req,res){
      res.sendFile('index.html',{root: '/root/liveblog/'});
 });
 
+//create a new user
+router.route('/signup')
+
+    .post(function(req,res){
+
+    });
+
+
+//login an existing user
+router.route('/login')
+
+    .post(function(req,res){     
+
+     });
+
+
+
+
+
+//for the events route
 router.route('/events')
     
-     //create an event accessible at /api/events/
-     .post	
+     .get(function(req,res){
+      return db.events.find({}).limit(10)
 
+     }
+     .post(function(req,res){
+        
+  
+
+     });	
+
+// for a specific event
+router.route('/events/:id'){
+
+
+}
 //register app so all routes will use '/api'
 app.use('/api',router);
 
