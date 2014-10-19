@@ -24,17 +24,30 @@ db.once('open', function callback () {
 var router = express.Router();
 
 router.get('/',function(req,res){
-     res.sendFile('index.html',{root: '/root/liveblog/'});
+     res.sendFile(__dirname + '/public/index.html');
 });
 
 router.route('/events')
-    
+
      //create an event accessible at /api/events/
-     .post	
+     .post(function(req, res){
+
+     })
+     //get all events from DB limit to 20
+     .get(function(req,res){
+
+     });
+
+     //create a new event
+router.route('/events/:event_id')
+    .get(function(req,res){
+
+    });
+
 
 //register app so all routes will use '/api'
-app.use('/api',router);
 
+app.use('/api',router);
 //----------------------------------------
 io.on('connection', function(socket){
   console.log('a user connected');
