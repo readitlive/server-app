@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Live Blog for Rojere</title>
+    <title>Content Creation Page</title>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 13px Helvetica, Arial; }
@@ -9,7 +9,7 @@
     </style>
   </head>
   <body>
-    <h1> This is a live blog for Rojere </h1>
+    <h1> Content creation page for the liveblogger </h1>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script>
@@ -18,20 +18,14 @@
         socket.on('info',function(data){
           console.log(data);
         });
-
-        socket.on('new_comment', function(data){
-          console.log("Yo big daddy is saying something",data);
-          $('#stream').append('<li>'+data.msg+' </li>');
-        })
         $('#submit').click(function(){
           var comment = $('#text').val();
           console.log(comment);
-          socket.emit('client_comment', {'comment': comment});
+          socket.emit('creator_stream', {'comment': comment});
          });
       });
     </script>
     <textarea id="text"></textarea>
-    <button id="submit"> Submit Comment </button>
-    <ul id="stream"></ul>
+    <button id="submit"> Submit View </button>
   </body>
 </html>
