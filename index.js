@@ -55,7 +55,14 @@ io.on('connection', function(socket){
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
+
+    //recieve client data
+  socket.on('client_comment', function(data){
+    console.log(data.comment);
+    socket.broadcast.emit('new_comment',{msg : data.comment});
+  });
 });
+
 
 //Starting a server on port 3000
 http.listen(3000, function(){
