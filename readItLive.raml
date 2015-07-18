@@ -1,0 +1,100 @@
+#%RAML 0.8
+---
+title: ReadItLive API
+baseUri: http://readitlive.net/api
+version: v1
+
+/login:
+  /signup:
+    post:
+      description: Create a new user
+      responses:
+        200:
+          body:
+		        application/json:
+		          example: |
+		            {
+		              "email_address":
+		              "password":
+		              "dob"
+		            }
+
+  /signin:
+    post:
+      description:Login as a user
+        email_address:
+          displayName: Email Address
+          type: string
+          description: The login or user_id is the unique email_address
+          example: neil@gmail.com
+          required: true
+        password:
+          displayName: N/A
+          type: string
+          description: Password
+          required: true
+         responses:
+		        200:
+		          body:
+				        application/json:
+				          example: |
+				            {
+				              "email_address":
+				              "password":
+				            }
+/events:
+	get:
+	  responses:
+	    200:
+	      body:
+	        application/json:
+	          schema: |
+	            {
+	            	"type": "array of objects"
+							  "description": returns an array of events
+							  "properties" : {
+							  	"creator" : { "type": "string" },
+							  	"event_name" : { "type": "string" },
+							  	"event_date" : { "type": "dateTime" }
+							  }
+	            }
+	          example: |
+		            [
+			            {
+			              "creator" : "Joe Frasier"
+								  	"event_name" : "Tour De France"
+								  	"event_date" : "May 10, 2014 5:40 pm"
+			            },
+			            {
+			              "creator" : "Joe Frasier"
+								  	"event_name" : "Tour De France"
+								  	"event_date" : "May 10, 2014 5:40 pm"
+			            }
+		            ]
+
+	post: //create a new event
+	  responses:
+	    200:
+	      body:
+	        application/json:
+	          schema: |
+	            {
+	            	"type": "object"
+							  "description": Creates a new event
+							  "properties" : {
+							  	"creator" : { "type": "string" },
+							  	"event_name" : { "type": "string" },
+							  	"event_date" : { "type": "dateTime" }
+							  }
+	            }
+	          example: |
+		            {
+		              "creator" : "Mike Smith"
+							  	"event_name" : "Dance Off SF"
+							  	"event_date" : "Jan 12, 2013 9:00 pm"
+		            }
+	/{event_id}
+   //No api - reading and writing posts done through socket.io
+
+
+
